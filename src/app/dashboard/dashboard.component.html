@@ -1,0 +1,69 @@
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">DASHBOARD</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Services</a>
+          </li>  
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">UserName</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">update profile</a></li>
+              <li><a class="dropdown-item" href="#">update password</a></li>
+           
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div  class="container">
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>DOB</th>
+        <th>DOJ</th>       
+        <th>Email</th>
+        <th>Mobile</th>
+        <th>Gender</th>
+        <th>Skills</th>
+        <th>State</th>
+        <th>City</th>
+
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let u of result">
+            <td>{{u.Id}}</td>
+            <td>{{u.Name}}</td>
+            <td>{{u.DOB}}</td>
+            <td>{{u.DOJ}}</td>           
+            <td>{{u.Email}}</td>
+            <td>{{u.Mobile}}</td>
+            <td>{{u.Gender}}</td>
+            <td>{{u.Skills}}</td>
+            <td>{{u.State}}</td>
+            <td>{{u.City}}</td>
+            <td>
+              <button (click)="deleteEmp(u.Id)" class="btn btn-secondary ms-1">DELETE</button>
+            </td>
+            <td>
+              <button (click)="updaterecords(u.Id)" class="btn btn-secondary ms-1">update</button>
+            </td>
+          </tr>
+         
+    </tbody>
+  </table>
+</div>

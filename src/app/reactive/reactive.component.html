@@ -1,0 +1,107 @@
+<form [formGroup]="contactForm" (ngSubmit)="onSubmit()" novalidate>
+ 
+    <p>
+      <label for="firstname">First Name </label>
+      <input type="text" id="firstname" name="firstname"  formControlName="firstname">
+      
+    </p>
+    <div
+      *ngIf="!firstname?.valid && (firstname?.dirty ||firstname?.touched)">
+      <div class="alert alert-danger" [hidden]="!firstname.errors.required">
+        First Name is required
+      </div>
+      <div class="alert alert-danger" [hidden]="!firstname.errors.minlength">
+        Min Length is 10
+      </div>
+    </div>
+   
+    <p>
+      <label for="lastname">Last Name </label>
+      <input type="text" id="lastname" name="lastname"  formControlName="lastname">
+    </p>
+  <div
+    *ngIf="!lastname?.valid && (lastname?.dirty ||lastname?.touched)">
+        <div class="alert alert-danger" [hidden]="!lastname.errors.required">
+          Last Name is required
+        </div>
+        <div class="alert alert-danger" [hidden]="!lastname.errors.minlength">
+          Min Length is 10
+        </div>
+        <div class="alert alert-danger" [hidden]="!lastname.errors.maxlength">
+          Max Length is 15
+        </div>
+  </div>
+  
+   
+    <p>
+      <label for="email">Email </label>
+      <input type="text" id="email" name="email"  formControlName="email">
+    </p>
+  <div
+    *ngIf="!email?.valid && (email?.dirty ||email?.touched)">
+        <div class="alert alert-danger" [hidden]="!email.errors.required">
+          Email is required
+        </div>
+        <div class="alert alert-danger" [hidden]="!email.errors.minlength">
+          Min Length is 10
+        </div>
+  </div>
+  
+    <p>
+      <label for="mobile">Mobile: </label>
+      <input type="text" id="mobile" name="mobile" (keypress)="allownumbers($event)" formControlName="mobile">
+    </p>
+    <div
+    *ngIf="!mobile?.valid && (mobile?.dirty ||mobile?.touched)">
+        <div class="alert alert-danger" [hidden]="!mobile.errors.required">
+          mobile is required
+        </div>
+        <div class="alert alert-danger" [hidden]="!mobile.errors.minlength">
+          Min Length is 10
+        </div>
+  </div>
+   
+    <p>
+      <label for="gender">Gender </label>
+      <input type="radio" value="male" id="gender" name="gender"  formControlName="gender"> Male
+      <input type="radio" value="female" id="gender" name="gender"  formControlName="gender"> Female
+    </p>
+    <div
+    *ngIf="!gender?.valid && (gender?.dirty ||gender?.touched)">
+        <div class="alert alert-danger" [hidden]="!gender.errors.required">
+          Gender information to be filled....!
+        </div>
+  </div>
+   
+    <p>
+      <label for="isMarried">Married </label>
+      <input type="checkbox" id="isMarried" name="isMarried"  formControlName="isMarried">
+    </p>
+    <div
+    *ngIf="!isMarried?.valid && (isMarried?.dirty ||isMarried?.touched)">
+        <div class="alert alert-danger" [hidden]="!isMarried.errors.required">
+          isMarried is required
+        </div>
+  </div>
+   
+    <p>
+      <label for="country">country </label>
+      <select id="country" name="country"  formControlName="country">
+          <option  *ngFor="let c of countries">
+              {{c}}
+            </option>
+      </select>
+    </p>
+    <div
+    *ngIf="!country?.valid && (country?.dirty ||country?.touched)">
+        <div class="alert alert-danger" [hidden]="!country.errors.required">
+          country is required
+        </div>
+  </div>
+   
+    <p>
+      <button type="submit" [disabled]="!contactForm.valid">Submit</button>
+    </p>
+   
+  </form>
+  {{contactdata|json}} 
